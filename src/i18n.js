@@ -13,7 +13,10 @@ export default class I18n extends Component {
   }
 
   getChildContext() {
-    return { t: this._polyglot.t.bind(this._polyglot) };
+    return {
+      t: this._polyglot.t.bind(this._polyglot),
+      locale: this.props.locale,
+    };
   }
   
   componentWillReceiveProps(newProps) {
@@ -39,4 +42,5 @@ I18n.propTypes = {
 
 I18n.childContextTypes = {
   t: React.PropTypes.func.isRequired,
+  locale: React.PropTypes.string.isRequired,
 };
